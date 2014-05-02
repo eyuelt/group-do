@@ -2,3 +2,5 @@
 *~
 *.sw[po]
 \#*\#
+
+/node_modules/
