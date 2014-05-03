@@ -34,7 +34,9 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/home/:group_name', index.view);
+app.get('/home/:group_name', index.homepage);
+app.get('/board/:group_name', index.boardPage);
+app.get('/newevent/:group_name', index.newEventPage);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
