@@ -4,6 +4,7 @@ var path = require('path');
 var handlebars = require('express3-handlebars');
 var mongoose = require('mongoose');
 
+var index = require('./routes/index');
 
 // Connect to the Mongo database, whether locally or on Heroku
 var local_database_name = 'group-do';
@@ -33,6 +34,7 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
+app.get('/home/:group_name', index.view);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
