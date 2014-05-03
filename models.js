@@ -5,7 +5,8 @@ var Schema = Mongoose.Schema;
 var GroupSchema = new Schema({
   "name": String,
   "date_created": { type: Date, default: Date.now },
-  "members": [ UserSchema ]
+  "members": [ UserSchema ],
+  "events": [ EventSchema ]
   //"private": Boolean,
   //"salt": String,
   //"key": String
