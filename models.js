@@ -4,7 +4,7 @@ var Schema = Mongoose.Schema;
 /*
 var GroupSchema = new Schema({
   "name": String,
-  "date_created": Date,
+  "date_created": { type: Date, default: Date.now },
   "members": [ UserSchema ]
   //"private": Boolean,
   //"salt": String,
@@ -15,7 +15,7 @@ var GroupSchema = new Schema({
 /*
 var UserSchema = new Schema({
   "username": String,
-  "date_created": Date,
+  "date_created": { type: Date, default: Date.now },
   "salt": String,
   "key": String
 });
@@ -23,7 +23,7 @@ var UserSchema = new Schema({
 
 var EventSchema = new Schema({
   //"creator": {type: Schema.ObjectId, ref:'UserSchema'},
-  "date_created": Date,
+  "date_created": { type: Date, default: Date.now },
   "title": String,
   "description": String,
   //"upvotes": [ VoteSchema ],
@@ -34,7 +34,7 @@ var EventSchema = new Schema({
 /*
 var VoteSchema = new Schema({
   //"creator": {type: Schema.ObjectId, ref:'UserSchema'},
-  "date_created": Date,
+  "date_created": { type: Date, default: Date.now },
   "is_upvote": Boolean
 });
 */
@@ -42,9 +42,8 @@ var VoteSchema = new Schema({
 /*
 var CommentSchema = new Schema({
   //"creator": {type: Schema.ObjectId, ref:'UserSchema'},
-  "date_created": Date,
-
-  "phone": Number
+  "date_created": { type: Date, default: Date.now },
+  "text": String
 });
 */
 
