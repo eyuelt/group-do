@@ -43,6 +43,7 @@ app.get('/newevent/:group_name', index.newEventPage);
 
 // API
 app.post('/api/event', api.createEvent);
+app.get('/api/event', api.getEvents);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
