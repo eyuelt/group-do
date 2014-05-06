@@ -1,21 +1,11 @@
-doctype html
-html(lang="en")
-  head
-    meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
-    title= "group-do | " + page_title
-    // CSS
-    link(rel="stylesheet", href="/css/bootstrap.min.css")
-    link(rel="stylesheet", href="/css/bootstrap-theme.min.css")
-  body
-    div(class="container")
-      form(role="form", method="post", action="/api/event")
-        div(class="form-group")
-          label(for="title") Title
-          input(type="text", class="form-control", id="title", placeholder="Title", name="title")
-        div(class="form-group")
-          label(for="description") Description
-          input(type="text", class="form-control", id="description", placeholder="Description", name="description")
-        input(type="submit", id="submitBtn", class="btn btn-primary", value="Create Event")
-    // JS
-    script(src="/js/jquery-1.11.0.js")
-    script(src="/js/bootstrap.js")
+extends main_template
+
+block content
+  form(role="form", method="post", action="/api/event")
+    div(class="form-group")
+      label(for="title") Title
+      input(type="text", class="form-control", id="title", placeholder="Title", name="title")
+    div(class="form-group")
+      label(for="description") Description
+      input(type="text", class="form-control", id="description", placeholder="Description", name="description")
+    input(type="submit", id="submitBtn", class="btn btn-primary", value="Create Event")
