@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
+    title= "group-do | " + page_title
+    // CSS
+    link(rel="stylesheet", href="/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/css/bootstrap-theme.min.css")
+  body
+    div(class="container")
+      ul(id="event-list")
+    // JS
+    script(src="/js/jquery-1.11.0.js")
+    script(src="/js/bootstrap.js")
+    script(type="text/javascript").
+      (function populateEventsList() {
+       $.ajax({
+          url: '/api/event/',
+          type: 'GET',
+          success: function(response) {
+            var events = response.events;
+            var list = $('#event-list')[0];
+            for (var i = 0; i < events.length; i++) {
+              var li = document.createElement('li');
+              li.innerHTML = "Title: '<b>" + events[i]["title"] + "</b>', Desc: '<b>" + events[i]["description"] + "</b>'";
+              list.appendChild(li);
+            }
+          }
+          });
+       })();

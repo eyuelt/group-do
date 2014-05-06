@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+  head
+    meta(http-equiv="Content-type", content="text/html;charset=UTF-8")
+    title= "group-do | " + page_title
+    // CSS
+    link(rel="stylesheet", href="/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/css/bootstrap-theme.min.css")
+  body
+    div(class="container")
+      a(href="/board/" + group_name) Events board
+      br
+      a(href="/newevent/" + group_name) Create a new event
+    // JS
+    script(src="/js/jquery-1.11.0.js")
+    script(src="/js/bootstrap.js")
