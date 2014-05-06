@@ -2,10 +2,10 @@ extends main_template
 
 block content
   form(role="form", method="post", action="/api/event")
-    div(class="form-group")
+    .form-group
       label(for="title") Title
       input(type="text", class="form-control", id="title", placeholder="Title", name="title")
-    div(class="form-group")
+    .form-group
       label(for="description") Description
       input(type="text", class="form-control", id="description", placeholder="Description", name="description")
     input(type="submit", id="submitBtn", class="btn btn-primary", value="Create Event")
