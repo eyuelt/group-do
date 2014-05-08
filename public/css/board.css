@@ -1,0 +1,15 @@
+#event-list .event {
+  border: 2px solid black;
+  min-height: 50px;
+  padding: 10px;
+  margin-bottom: -2px;
+}
+
+#event-list .event .title {
+  font-weight: bold;
+  font-size: 120%
+}
+
+#event-list .event .description {
+  color: #aaa;
+}
