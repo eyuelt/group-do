@@ -4,19 +4,4 @@ block content
   ul(id="event-list")
 
 block js
-  script(type="text/javascript").
-    (function populateEventsList() {
-     $.ajax({
-        url: '/api/event/',
-        type: 'GET',
-        success: function(response) {
-          var events = response.events;
-          var list = $('#event-list')[0];
-          for (var i = 0; i < events.length; i++) {
-            var li = document.createElement('li');
-            li.innerHTML = "Title: '<b>" + events[i]["title"] + "</b>', Desc: '<b>" + events[i]["description"] + "</b>'";
-            list.appendChild(li);
-          }
-        }
-        });
-     })();
+  script(src="/js/board.js")
