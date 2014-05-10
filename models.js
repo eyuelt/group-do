@@ -13,17 +13,15 @@ var GroupSchema = new Schema({
 });
 */
 
-/*
 var UserSchema = new Schema({
   "username": String,
   "date_created": { type: Date, default: Date.now },
-  "salt": String,
-  "key": String
+  //"salt": String,
+  //"key": String
 });
-*/
 
 var EventSchema = new Schema({
-  //"creator": {type: Schema.ObjectId, ref:'UserSchema'},
+  "creator": {type: Schema.ObjectId, ref:'UserSchema'},
   "date_created": { type: Date, default: Date.now },
   "title": String,
   "description": String,
@@ -49,7 +47,7 @@ var CommentSchema = new Schema({
 */
 
 //exports.Group = Mongoose.model('Group', GroupSchema);
-//exports.User = Mongoose.model('User', UserSchema);
+exports.User = Mongoose.model('User', UserSchema);
 exports.Event = Mongoose.model('Event', EventSchema);
 //exports.Vote = Mongoose.model('Vote', VoteSchema);
 //exports.Comment = Mongoose.model('Comment', CommentSchema);

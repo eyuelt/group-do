@@ -20,6 +20,7 @@ var unfinishedCount = 0;
 unfinishedCount++; //to make sure that it doesn't reach 0 before all clears have begun
 
 
+clear(models.User);
 clear(models.Event);
 
 
