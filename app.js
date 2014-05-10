@@ -45,6 +45,8 @@ app.get('/newuser/:group_name', index.newUserPage);
 // API
 app.post('/api/event', api.createEvent);
 app.get('/api/event', api.getEvents);
+app.post('/api/user', api.createUser);
+app.get('/api/user', api.getUsers);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
