@@ -15,22 +15,26 @@ var local_database_uri  = 'mongodb://localhost/' + local_database_name;
 var database_uri = process.env.MONGOLAB_URI || local_database_uri;
 mongoose.connect(database_uri);
 
-
-// Keep track of how many calls to remove have not yet completed
+// Keep track of how many calls to clear have not yet completed
 var unfinishedCount = 0;
-unfinishedCount++; //to make sure that it doesn't reach 0 before all removes have begun
-
-// Remove all events
-unfinishedCount++;
-models.Event
-  .find()
-  .remove()
-  .exec(onceClear);
+unfinishedCount++; //to make sure that it doesn't reach 0 before all clears have begun
 
 
-unfinishedCount--; //to make sure that it doesn't reach 0 before all removes have begun
+clear(models.Event);
 
-// Close connection when both removes are done
+
+unfinishedCount--; //to make sure that it doesn't reach 0 before all clears have begun
+
+// Clear the passed in model
+function clear(modelToClear) {
+  unfinishedCount++;
+  modelToClear
+    .find()
+    .remove()
+    .exec(onceClear);
+}
+
+// Close connection when all clears are done
 function onceClear(err) {
   if (err) console.log(err);
   unfinishedCount--;
