@@ -1,3 +1,5 @@
+// TODO: make sure that all api calls are coming from
+// an authenticated user
 var models = require('../models');
 
 exports.createEvent = function(req, res) {

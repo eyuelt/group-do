@@ -11,5 +11,5 @@ exports.newEventPage = function(req, res) {
 };
 
 exports.newUserPage = function(req, res) {
-  res.render('newuser', {'group_name':req.params.group_name});
+  res.render('newuser');
 };
