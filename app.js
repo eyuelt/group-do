@@ -40,6 +40,7 @@ app.configure(function() {
 app.get('/home/:group_name', index.homepage);
 app.get('/board/:group_name', index.boardPage);
 app.get('/newevent/:group_name', index.newEventPage);
+app.get('/newuser/:group_name', index.newUserPage);
 
 // API
 app.post('/api/event', api.createEvent);

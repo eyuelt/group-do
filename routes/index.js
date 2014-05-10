@@ -9,3 +9,7 @@ exports.boardPage = function(req, res) {
 exports.newEventPage = function(req, res) {
   res.render('newevent', {'group_name':req.params.group_name});
 };
+
+exports.newUserPage = function(req, res) {
+  res.render('newuser', {'group_name':req.params.group_name});
+};
