@@ -1,3 +1,4 @@
+-use github issues for this
 -make sessions persistent across relaunches
 -make sure user of api is authenticated
 -redirect guest users to login page?
@@ -6,15 +7,24 @@
   --this obviously doesn't really provide security, but it at least shields
     the plain text of the password, in case the user uses the same password
     for other services. this is just for development, as eventually, https
-    will be needed.
+    will be needed
 -do all the ui stuff
   --make it look nice
 -add comments
 -add votes
 -add groups
+-make api specific to a group
+  --for example, getEvents should return all events in a certain group, not
+    all of the events in the system
 -add private groups
   --authenticated users can join the group using the password. guest users
-    can view the group page using the password.
+    can view the group page using the password
+-make sure authenticated api user has permission for api call
+  --for example, for a private group, only users within the group should be
+    able to get results from getEvents for that group
+  --maybe all api methods should be rewritten as callback methods that get
+    passed into a method that determines the user's permissions then calls
+    the callback with the user's permissions object
 -combine all of the different views into a single group page
   --each group page should be like a single page app
 -create admin page for groups
