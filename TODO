@@ -1,0 +1,29 @@
+-make sessions persistent across relaunches
+-make sure user of api is authenticated
+-redirect guest users to login page?
+-get rid of TODOs in code
+-hash the password on the client side before sending it
+  --this obviously doesn't really provide security, but it at least shields
+    the plain text of the password, in case the user uses the same password
+    for other services. this is just for development, as eventually, https
+    will be needed.
+-do all the ui stuff
+  --make it look nice
+-add comments
+-add votes
+-add groups
+-add private groups
+  --authenticated users can join the group using the password. guest users
+    can view the group page using the password.
+-combine all of the different views into a single group page
+  --each group page should be like a single page app
+-create admin page for groups
+  --so there's an admin array in the group and creator is auto added to it
+  --power to:
+    ---boot users
+    ---delete events?
+    ---add/demote other admins (only creator, other admins can't do this)
+-build out rest of site
+  --landing page
+  --registration page
+  --group creation page
