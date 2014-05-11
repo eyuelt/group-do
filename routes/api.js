@@ -24,7 +24,7 @@ exports.createEvent = function(req, res) {
 
 exports.getEvents = function(req, res) {
   var search_options = {};
-  models.Event.find(search_options).select('-__v').exec(function (err, events) {
+  models.Event.find(search_options).select('_id date_created title description creator').exec(function (err, events) {
     if (err) { console.log(err); res.send(500); }
     var result = {};
     result.events = events;
@@ -49,7 +49,7 @@ exports.createUser = function(req, res) {
 
 exports.getUsers = function(req, res) {
   var search_options = {};
-  models.User.find(search_options).select('-__v -salt -key').exec(function (err, users) {
+  models.User.find(search_options).select('_id date_created username').exec(function (err, users) {
     if (err) { console.log(err); res.send(500); }
     var result = {};
     result.users = users;
