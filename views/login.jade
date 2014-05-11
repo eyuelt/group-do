@@ -1,0 +1,8 @@
+extends main_template
+
+block content
+  form(role="form", method="post", action="/api/login")
+    .form-group
+      label(for="username") Username
+      input(type="text", class="form-control", id="username", placeholder="Username", name="username")
+    input(type="submit", id="submitBtn", class="btn btn-primary", value="Create Event")

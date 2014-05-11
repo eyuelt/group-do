@@ -46,6 +46,7 @@ app.get('/home/:group_name', index.homepage);
 app.get('/board/:group_name', index.boardPage);
 app.get('/newevent/:group_name', index.newEventPage);
 app.get('/newuser', index.newUserPage);
+app.get('/login', index.loginPage);
 
 // API
 app.post('/api/event', api.createEvent);

@@ -13,3 +13,7 @@ exports.newEventPage = function(req, res) {
 exports.newUserPage = function(req, res) {
   res.render('newuser');
 };
+
+exports.loginPage = function(req, res) {
+  res.render('login');
+};
