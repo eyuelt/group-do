@@ -45,3 +45,33 @@ exports.getUsers = function(req, res) {
     res.json(result);
   });
 };
+
+//login
+exports.getAuthentication = function(req, res) {
+  checkLogin(req.query.username, req.query.password, function(is_valid_login, user_id) {
+    if (is_valid_login) {
+      req.session.user_id = user_id;
+      res.send(204); //204: No Content
+    } else {
+      res.send(403); //403: Forbidden
+    }
+  });
+};
+
+function checkLogin(username, password, callback) {
+  models.User.find({ "username": username }).exec(function(err, users) {
+    if (err) { console.log(err); res.send(500); };
+    if (users.length === 1) {
+      var user = users[0];
+      /*TODO:delete*/ callback(true, user._id);
+      //var key = crypto.pbkdf2Sync(password, user.salt, KDF_NUM_ITERS, KDF_KEY_SZ).toString('hex');
+      //if (user.key === key) {
+      //  callback(true, user._id);
+      //} else {
+      //  callback(false);
+      //}
+    } else {
+      callback(false);
+    }
+  });
+};
