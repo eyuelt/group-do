@@ -17,6 +17,10 @@ var app = express();
 
 // all environments
 app.configure(function() {
+  var session_secret = process.env.SESSION_SECRET;
+  if (!session_secret) {
+    throw Error("SESSION_SECRET environment variable not defined");
+  }
   app.set('port', process.env.PORT || 8000);
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'jade');
@@ -27,6 +31,7 @@ app.configure(function() {
   app.use(express.urlencoded());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
+  app.use(express.session({secret: session_secret}));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 
