@@ -1,13 +1,15 @@
-// TODO: make sure that all api calls are coming from
-// an authenticated user
 var models = require('../models');
 
 exports.createEvent = function(req, res) {
+  if (!req.session.user_id)
+    res.send(403); //403: Forbidden
   var title = req.body.title;
   var description = req.body.description;
+  var user_id = req.session.user_id;
   var new_event = new models.Event({
     "title": title,
-    "description": description
+    "description": description,
+    "creator": user_id
   });
   new_event.save(function(err) {
     if (err) { console.log(err); res.send(500); }
