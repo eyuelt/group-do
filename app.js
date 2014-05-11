@@ -53,7 +53,7 @@ app.post('/api/event', api.createEvent);
 app.get('/api/event', api.getEvents);
 app.post('/api/user', api.createUser);
 app.get('/api/user', api.getUsers);
-app.get('/api/auth', api.getAuthentication);
+app.post('/api/auth', api.createAuthentication);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

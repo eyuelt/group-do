@@ -58,8 +58,8 @@ exports.getUsers = function(req, res) {
 };
 
 //login
-exports.getAuthentication = function(req, res) {
-  checkLogin(req.query.username, req.query.password, function(is_valid_login, user_id) {
+exports.createAuthentication = function(req, res) {
+  checkLogin(req.body.username, req.body.password, function(is_valid_login, user_id) {
     if (is_valid_login) {
       req.session.user_id = user_id;
       res.send(204); //204: No Content

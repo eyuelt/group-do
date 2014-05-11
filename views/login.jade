@@ -1,7 +1,7 @@
 extends templates/main_template
 
 block content
-  form(role="form", method="get", action="/api/auth")
+  form(role="form", method="post", action="/api/auth")
     .form-group
       label(for="username") Username
       input(type="text", class="form-control", id="username", placeholder="Username", name="username")
