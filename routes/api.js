@@ -1,4 +1,9 @@
 var models = require('../models');
+var crypto = require('crypto');
+
+var KDF_NUM_ITERS = 100000;
+var KDF_KEY_SZ = 256;
+var SALT_NUM_BYTES = 16;
 
 exports.createEvent = function(req, res) {
   if (!req.session.user_id)
@@ -29,8 +34,12 @@ exports.getEvents = function(req, res) {
 
 exports.createUser = function(req, res) {
   var username = req.body.username;
+  var salt = crypto.randomBytes(SALT_NUM_BYTES).toString('hex');
+  var key = crypto.pbkdf2Sync(req.body.password, salt, KDF_NUM_ITERS, KDF_KEY_SZ).toString('hex');
   var new_user = new models.User({
     "username": username,
+    "salt": salt,
+    "key": key
   });
   new_user.save(function(err) {
     if (err) { console.log(err); res.send(500); }
@@ -65,13 +74,12 @@ function checkLogin(username, password, callback) {
     if (err) { console.log(err); res.send(500); };
     if (users.length === 1) {
       var user = users[0];
-      /*TODO:delete*/ callback(true, user._id);
-      //var key = crypto.pbkdf2Sync(password, user.salt, KDF_NUM_ITERS, KDF_KEY_SZ).toString('hex');
-      //if (user.key === key) {
-      //  callback(true, user._id);
-      //} else {
-      //  callback(false);
-      //}
+      var key = crypto.pbkdf2Sync(password, user.salt, KDF_NUM_ITERS, KDF_KEY_SZ).toString('hex');
+      if (user.key === key) {
+        callback(true, user._id);
+      } else {
+        callback(false);
+      }
     } else {
       callback(false);
     }

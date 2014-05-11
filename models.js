@@ -16,8 +16,8 @@ var GroupSchema = new Schema({
 var UserSchema = new Schema({
   "username": String,
   "date_created": { type: Date, default: Date.now },
-  //"salt": String,
-  //"key": String
+  "salt": String,
+  "key": String
 });
 
 var EventSchema = new Schema({
